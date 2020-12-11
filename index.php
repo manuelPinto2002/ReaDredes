@@ -22,16 +22,20 @@ while ( $resultado=$res->fetch_assoc() ) {
 	echo '<a href="filmes_show.php?filme='.$resultado['id_filme'].'">';
 	echo $resultado['titulo'];
 	echo "</a>";
+	echo ' -> <a href="filmes_edit.php?filme='.$resultado['id_filme'].'">Editar</a>';
 	echo "<br>";
 }
 $stm->close();
  ?>
 <br>
 <a href="filmes_create.php">Adicionar Filmes</a>
+<br>
+
+
 </body>
 </html>
-<?php 
 
+<?php 
 } //end if 
 
  ?>

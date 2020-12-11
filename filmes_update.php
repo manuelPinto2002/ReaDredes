@@ -30,45 +30,23 @@ if ($_SERVER['REQUEST_METHOD']=="POST") {
 		exit;
 	}
 	else{
-		$sql='insert into filmes (titulo, sinopse, idioma, quantidade, data_lancamento) values (?,?,?,?,?)';
+		$sql='update filmes set titulo=?, sinopse=?, idioma=?, quantidade=?, data_lancamento=? where id_Filme=?';
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
-			$stm->bind_param('sssis',$titulo,$sinopse,$idioma,$quantidade,$data_lancamento);
+			$stm->bind_param('ssssi',$titulo,$sinopse,$idioma,$quantidade,$data_lancamento,$idFilme);
 			$stm->execute();
 			$stm->close();
-
-			echo "<script>alert('filme adicionado com sucesso')</script>";
+echo "<script>alert('filme adicionado com sucesso')</script>";
 
 			echo "Aguarde um momento. A reencaminhar pagina";
 
 			header("refresh:5; url=index.php");
 		}
 		else{
-			echo ($con->error);
-			echo "Aguarde um momento. A reencaminhar página";
-			header("refresh:5; url=index.php");
-		} 
-	} //end if
-} //if
-else{
- ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Adicionar Filmes</title>
-</head>
-<body>
-<h1>Adicionar filmes</h1>
-<form action="filmes_create.php" method="post">
-	<label>Titulo</label><input type="text" name="titulo" required><br>
-	<label>Sinopse</label><input type="text" name="sinopse"><br>
-	<label>Quantidade</label><input type="text" name="quantidade"><br>
-	<label>Idioma</label><input type="text" name="numeric"><br>
-	<label>Data Lançamento</label><input type="date" name="data_lancamento"><br>
-	<input type="submit" name="enviar">
-</form>
-</body>
-</html>
-<?php  
+		}
+	}
 }
-?>
+else{
+	echo "<h1>Houve um erro ao processar o seu pedido!<br>Ira ser reencaminhado!</h1>";
+	header("refresh:5; url=index.php");
+}
