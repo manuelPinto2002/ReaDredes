@@ -1,4 +1,5 @@
 <?php 
+
 if ($_SERVER['REQUEST_METHOD']=="GET") {
 	if (!isset($_GET['filme'])|| !is_numeric($_GET['filme'])) {
 		echo "<script>alert('Erro ao abrir livro');</script>";
@@ -45,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 <?php 
 if (isset($filme)) {
 	echo "<br>";
-	echo $filme['titulo'];
+	echo utf8_encode($filme['titulo']);
 	echo "<br>";
-	echo $filme['sinopse'];
+	echo utf8_encode($filme['sinopse']);
 	echo "<br>";
 	echo $filme['idioma'];
 	echo "<br>";
@@ -59,6 +60,8 @@ if (isset($filme)) {
 else{
  echo "<h2>Parece que o filme selecionado nao existe. <br> confirme a sua seleção</h2>";
 }
+
 ?>
+
 </body>
 </html>

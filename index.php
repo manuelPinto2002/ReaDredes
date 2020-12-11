@@ -27,6 +27,7 @@ while ( $resultado=$res->fetch_assoc() ) {
 $stm->close();
  ?>
 <br>
+<a href="filmes_create.php">Adicionar Filmes</a>
 </body>
 </html>
 <?php 
