@@ -59,7 +59,7 @@ else{
 </head>
 <body>
 <h1>Adicionar filmes</h1>
-<form>
+<form action="filmes_create.php" method="post">
 	<label>Titulo</label><input type="text" name="titulo" required><br>
 	<label>Sinopse</label><input type="text" name="sinopse"><br>
 	<label>Quantidade</label><input type="text" name="quantidade"><br>
