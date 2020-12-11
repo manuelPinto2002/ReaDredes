@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
 			$stm->bind_param('i',$idFilme);
-			$stm->excecute();
+			$stm->execute();
 			$res=$stm->get_result();
 			$filme=$res->fetch_assoc();
 			$stm->close();
